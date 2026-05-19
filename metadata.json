@@ -1,0 +1,6 @@
+{
+  "name": "Prompt Lab",
+  "description": "Premium AI Marketplace with futuristic dark UI, AdMob monetization, and UTR payment verification system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

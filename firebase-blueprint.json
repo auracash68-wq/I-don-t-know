@@ -1,0 +1,58 @@
+{
+  "entities": {
+    "explore_prompts": {
+      "title": "Explore Prompts",
+      "description": "AI Prompts marketplace items",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "prompt": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "category": { "enum": ["female", "male", "trending", "studio", "sci-fi", "character"] },
+        "isPremium": { "type": "boolean" },
+        "price": { "type": "number" },
+        "tags": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "prompt", "imageUrl", "category"]
+    },
+    "payment_submissions": {
+      "title": "Payment Submissions",
+      "description": "UTR submissions for premium verification",
+      "type": "object",
+      "properties": {
+        "utrNumber": { "type": "string" },
+        "deviceId": { "type": "string" },
+        "promptId": { "type": "string" },
+        "status": { "enum": ["pending", "approved", "rejected"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["utrNumber", "deviceId", "status"]
+    },
+    "approved_devices": {
+      "title": "Approved Devices",
+      "description": "Devices unlocked for premium",
+      "type": "object",
+      "properties": {
+        "deviceId": { "type": "string" },
+        "isPremium": { "type": "boolean" },
+        "approvedAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "/explore_prompts/{promptId}": {
+      "schema": "explore_prompts",
+      "description": "Collection of prompts"
+    },
+    "/payment_submissions/{subId}": {
+      "schema": "payment_submissions",
+      "description": "Collection of payment requests"
+    },
+    "/approved_devices/{deviceId}": {
+      "schema": "approved_devices",
+      "description": "Collection of premium unlocked devices"
+    }
+  }
+}
